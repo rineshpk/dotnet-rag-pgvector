@@ -44,19 +44,19 @@ DotNetRagPgvector/
 ├── Application/             # Use cases + abstractions
 │   ├── Abstractions/        # IEmbeddingService, IVectorStore, ILLMService
 │   ├── Services/            # RagService, IngestionService
-│   └── DTOs/                # AskRequest
+│   └── DTOs/                # UserInput
 │
 ├── Domain/                  # Core models
-│   └── Entities/
+│   └── Models/
 │       ├── Document
 │       └── RetrievedDocument
 │
 ├── Infrastructure/          # Implementations
+│   ├── Entities/            # EF Core Entities - DesignPatterns
 │   ├── Persistence/         # EF Core + pgvector
 │   ├── VectorStores/        # PgVectorStore
 │   ├── Embeddings/          # Ollama / OpenAI
-│   ├── LLM/                 # Ollama / OpenAI
-│   └── Options/             # Provider configs
+│   └── LLM/                 # Ollama / OpenAI
 ```
 
 ---
@@ -75,7 +75,7 @@ DotNetRagPgvector/
 
 ## Tech Stack
 
-* .NET 8+
+* .NET 10
 * ASP.NET Core Minimal APIs
 * Entity Framework Core
 * PostgreSQL + pgvector
@@ -89,8 +89,8 @@ DotNetRagPgvector/
 
 ### 1. Prerequisites
 
-* .NET 8 SDK
-* Docker Desktop
+* .NET 10 SDK
+* Docker Desktop (Or Podman - set Aspire container runtime to podman)
 * .NET Aspire workload
 
 ```bash
@@ -187,7 +187,7 @@ No code changes required.
 
 ```c#
 var results = await dbContext.DesignPatterns
-    .OrderBy(x => x.Vector.CosineDistance(questionVector))
+    .OrderBy(x => x.Embedding.CosineDistance(questionVector))
     .Take(2)
     .ToListAsync();
 ```
