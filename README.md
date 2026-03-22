@@ -187,7 +187,7 @@ No code changes required.
 
 ```c#
 var results = await dbContext.DesignPatterns
-    .OrderBy(x => x.Vector.CosineDistance(questionVector))
+    .OrderBy(x => x.Embedding.CosineDistance(questionVector))
     .Take(2)
     .ToListAsync();
 ```
