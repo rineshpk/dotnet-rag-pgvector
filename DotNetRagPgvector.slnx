@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DotNetRagPgvector.Api/DotNetRagPgvector.Api.csproj" />
+  <Project Path="AppHost/AppHost.csproj" />
+  <Project Path="DotNetRagPgvector.Application/DotNetRagPgvector.Application.csproj" />
+  <Project Path="DotNetRagPgvector.Domain/DotNetRagPgvector.Domain.csproj" />
+  <Project Path="DotNetRagPgvector.Infrastructure/DotNetRagPgvector.Infrastructure.csproj" />
+</Solution>
